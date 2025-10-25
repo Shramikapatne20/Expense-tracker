@@ -1,0 +1,73 @@
+.chart-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 25px 20px;
+  background: linear-gradient(135deg, #f5faff, #e3f2fd);
+  border-radius: 20px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated radial overlay */
+.chart-container::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(25, 118, 210, 0.1) 0%, transparent 70%);
+  top: -50%;
+  left: -50%;
+  animation: rotate 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Container content */
+.chart-container h2 {
+  font-size: 1.8rem;
+  color: #1976d2;
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.chart-container canvas {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover effect */
+.chart-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(25, 118, 210, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chart-container {
+    margin: 25px;
+    padding: 20px;
+  }
+
+  .chart-container h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-container {
+    padding: 15px;
+  }
+
+  .chart-container h2 {
+    font-size: 1.4rem;
+  }
+}

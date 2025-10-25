@@ -1,0 +1,166 @@
+/* --- Navbar container --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff;
+  padding: 12px 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 20px 20px;
+  transition: all 0.3s ease;
+}
+
+/* Navbar logo */
+.navbar-logo h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Navbar links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-links li a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #ffeb3b;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.navbar-links li a:hover::after {
+  width: 100%;
+}
+
+.navbar-links li a:hover {
+  color: #ffeb3b;
+  transform: scale(1.05);
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(135deg, #ffeb3b, #fdd835);
+  color: #1976d2;
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #fdd835, #fbc02d);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Profile section */
+.navbar-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-icon {
+  font-size: 22px;
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Profile dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: #ffffff;
+  color: #1976d2;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  min-width: 200px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+}
+
+.profile-dropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.profile-dropdown p {
+  margin: 0;
+  padding: 6px 0;
+  font-weight: 500;
+}
+
+.profile-dropdown button {
+  margin-top: 10px;
+  width: 100%;
+  background: linear-gradient(135deg, #ff5252, #ff1744);
+  color: #fff;
+  padding: 8px 0;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-dropdown button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(255, 23, 68, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-logo h2 {
+    font-size: 22px;
+  }
+}
