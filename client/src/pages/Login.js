@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { loginUser } from "../services/api";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/login_signup.css";
@@ -7,6 +7,8 @@ import "../styles/login_signup.css";
 function Login() {
   const { setUser, setToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation(); // ✅ fix
+
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -16,11 +18,14 @@ function Login() {
   const handleSubmit = async (e) => {
   e.preventDefault();
   const data = await loginUser(form);
+
   if (data.token) {
     setToken(data.token);
-    navigate("/home");
     setUser(data.user);
-    navigate("/home"); // Redirect to home page after login
+
+    // Redirect user back to where they came from (or home)
+    const from = location.state?.from?.pathname || "/home";
+    navigate(from, { replace: true });
   } else {
     setError(data.message || "❌ Login failed. Check your credentials.");
   }
@@ -37,6 +42,7 @@ function Login() {
           name="email"
           type="email"
           placeholder="Email"
+          value={form.email} // ✅ controlled input
           onChange={handleChange}
           required
         />
@@ -45,6 +51,7 @@ function Login() {
           name="password"
           type="password"
           placeholder="Password"
+          value={form.password} // ✅ controlled input
           onChange={handleChange}
           required
         />
@@ -53,7 +60,8 @@ function Login() {
           Login
         </button>
       </form>
-       <p className="redirect-text">
+
+      <p className="redirect-text">
         Don’t have an account?{" "}
         <Link to="/signup" className="redirect-link">
           Sign up

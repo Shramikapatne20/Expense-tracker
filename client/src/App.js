@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute"; // ✅ add this line
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -19,17 +20,68 @@ function AppContent() {
     <>
       {!hideNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/add-expense" element={<AddExpensePage />} />
-        <Route path="/income" element={<AddIncomePage />} />
-        <Route path="/incomelist" element={<IncomeListPage />} />
-        <Route path="/expenses" element={<ExpenseListPage />} />
-        <Route path="/categories" element={<ExpensesByCategoryPage />} />
-        <Route path="/totals" element={<TotalSummaryPage />} />
-        <Route path="/incomecategory" element={<IncomeByCategoryPage />} />
+
+        {/* Protected routes */}
+        <Route
+          path="/add-expense"
+          element={
+            <ProtectedRoute>
+              <AddExpensePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/income"
+          element={
+            <ProtectedRoute>
+              <AddIncomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/incomelist"
+          element={
+            <ProtectedRoute>
+              <IncomeListPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/expenses"
+          element={
+            <ProtectedRoute>
+              <ExpenseListPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <ExpensesByCategoryPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/totals"
+          element={
+            <ProtectedRoute>
+              <TotalSummaryPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/incomecategory"
+          element={
+            <ProtectedRoute>
+              <IncomeByCategoryPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );
