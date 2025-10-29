@@ -1,0 +1,179 @@
+/* --- Form Container --- */
+.expense-form,
+.income-form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 35px 30px;
+  background: linear-gradient(135deg, #f5faff, #e3f2fd);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* more spacing for clarity */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Animated radial overlay */
+.expense-form::before,
+.income-form::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(25, 118, 210, 0.1) 0%, transparent 70%);
+  top: -50%;
+  left: -50%;
+  animation: rotate 25s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Labels for inputs */
+.expense-form label,
+.income-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1976d2;
+  z-index: 1;
+  position: relative;
+}
+
+/* Input fields */
+.expense-form input,
+.expense-form select,
+.expense-form textarea,
+.income-form input,
+.income-form select,
+.income-form textarea {
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  z-index: 1;
+  position: relative;
+  box-sizing: border-box; /* ensures proper alignment */
+  background-color: #fff;
+}
+
+.expense-form input:focus,
+.expense-form select:focus,
+.expense-form textarea:focus,
+.income-form input:focus,
+.income-form select:focus,
+.income-form textarea:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 10px rgba(25, 118, 210, 0.3);
+  outline: none;
+}
+
+/* Buttons */
+.expense-form button,
+.income-form button {
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.expense-form button:hover,
+.income-form button:hover {
+  background: linear-gradient(135deg, #1565c0, #64b5f6);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+}
+
+/* Form Title */
+.expense-form h2,
+.income-form h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1976d2;
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Messages */
+.form-message,
+.success {
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.error {
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .expense-form,
+  .income-form {
+    margin: 40px auto;
+    padding: 30px 25px;
+    gap: 20px;
+  }
+
+  .expense-form h2,
+  .income-form h2 {
+    font-size: 24px;
+  }
+
+  .expense-form button,
+  .income-form button {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .expense-form,
+  .income-form {
+    margin: 30px auto;
+    padding: 25px 20px;
+    gap: 18px;
+  }
+
+  .expense-form h2,
+  .income-form h2 {
+    font-size: 22px;
+  }
+
+  .expense-form button,
+  .income-form button {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+}

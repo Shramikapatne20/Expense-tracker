@@ -1,0 +1,170 @@
+/* 🌟 Home Page Container */
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #f5faff 0%, #e3f2fd 50%, #ffffff 100%);
+  min-height: 90vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ✨ Floating Gradient Background */
+.home::before {
+  content: "";
+  position: absolute;
+  width: 180%;
+  height: 180%;
+  top: -40%;
+  left: -40%;
+  background: radial-gradient(circle, rgba(25, 118, 210, 0.12) 0%, transparent 70%);
+  animation: rotateBg 40s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 🧭 Content Section */
+.home-content {
+  max-width: 550px;
+  z-index: 1;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+.home-content h1 {
+  font-size: 3rem;
+  color: #0d47a1;
+  margin-bottom: 20px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #1565c0, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideIn 1.2s ease;
+}
+
+.home-content p {
+  font-size: 1.15rem;
+  margin-bottom: 30px;
+  color: #333;
+  line-height: 1.6;
+  animation: fadeInUp 1.6s ease;
+}
+
+.home-content .brand {
+  color: #1976d2;
+  font-weight: 700;
+}
+
+/* 🌈 Button */
+.home-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-btn::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transition: width 0.3s ease;
+}
+
+.home-btn:hover::before {
+  width: 100%;
+}
+
+.home-btn:hover {
+  background: linear-gradient(135deg, #1565c0, #64b5f6);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(25, 118, 210, 0.4);
+}
+
+/* 🖼️ Image Section */
+.home-image img {
+  max-width: 450px;
+  width: 100%;
+  margin-left: 60px;
+  border-radius: 20px;
+  animation: floatImage 4s ease-in-out infinite;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.home-image img:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* ✨ Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes floatImage {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 900px) {
+  .home {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 60px 25px;
+  }
+
+  .home-content {
+    margin-top: 40px;
+    max-width: 90%;
+  }
+
+  .home-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .home-image img {
+    margin-left: 0;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 2rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .home-btn {
+    font-size: 1rem;
+    padding: 12px 22px;
+  }
+}
